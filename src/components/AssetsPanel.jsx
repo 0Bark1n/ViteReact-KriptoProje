@@ -44,7 +44,7 @@ const AssetsPanel = () => {
   const donutOptions = {
     labels: ['Nakit', 'Bitcoin (BTC)', 'Ethereum (ETH)'],
     chart: { type: 'donut', background: 'transparent', animations: { dynamicAnimation: { speed: 350 } } },
-    colors: ['#818cf8', '#f7931a', '#627eea'],
+    colors: ['#4f46e5', '#f7931a', '#627eea'],
     stroke: { show: false },
     dataLabels: { enabled: false },
     legend: { position: 'bottom', labels: { colors: '#9ca3af', fontFamily: 'Montserrat' } },
@@ -87,7 +87,7 @@ const AssetsPanel = () => {
               </thead>
               <tbody>
                 <tr>
-                  <td><strong style={{ color: '#818cf8' }}>Nakit</strong></td>
+                  <td><strong style={{ color: '#4f46e5' }}>Nakit</strong></td>
                   <td>-</td>
                   <td>${assets.nakit.toLocaleString('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
                 </tr>

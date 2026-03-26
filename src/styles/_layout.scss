@@ -25,7 +25,7 @@
         font-weight: 800;
         font-size: 1.7rem;
         text-transform: uppercase;
-        span { color: #818cf8; }
+        span { color: #4f46e5; }
     }
 
     .nav-menu { display: none !important; }
@@ -39,7 +39,7 @@
     .action-btn {
         background: none; border: none; color: var(--text-color);
         font-size: 1.4rem; cursor: pointer; transition: 0.2s;
-        &:hover { color: #818cf8; }
+        &:hover { color: #4f46e5; }
     }
 }
 
@@ -136,7 +136,7 @@
                     display: inline-block;
                     &:hover {
                         opacity: 1;
-                        color: #818cf8;
+                        color: #4f46e5;
                         transform: translateX(5px);
                     }
                 }
@@ -153,7 +153,7 @@
             font-size: 1.3rem;
             opacity: 0.6;
             transition: 0.3s;
-            &:hover { opacity: 1; color: #818cf8; transform: scale(1.1); }
+            &:hover { opacity: 1; color: #4f46e5; transform: scale(1.1); }
         }
     }
 
@@ -206,7 +206,7 @@
             li a { display: flex; align-items: center; padding: 12px 20px 12px 55px; color: var(--text-color); text-decoration: none; font-size: 1rem; font-weight: 600; opacity: 0.6; border-radius: 10px; margin: 0 10px 5px 10px; transition: all 0.2s ease;
                 i { margin-right: 15px; width: 20px; }
                 
-                // ESKİSİ: &:hover, &.active { opacity: 1; background: #818cf8 !important; color: #ffffff !important; }
+                // ESKİSİ: &:hover, &.active { opacity: 1; background: #4f46e5 !important; color: #ffffff !important; }
                 
                 // YENİSİ (Lighthouse Onaylı Koyu Mor):
                 &:hover, &.active { opacity: 1; background: #4f46e5 !important; color: #ffffff !important; }

@@ -57,7 +57,7 @@ const RealApiPanel = () => {
   const donutOptions = {
     labels: ['Bitcoin', 'Ethereum', 'Diğer Altcoinler'],
     chart: { type: 'donut', height: 300, background: 'transparent' },
-    colors: ['#f7931a', '#627eea', '#818cf8'],
+    colors: ['#f7931a', '#627eea', '#4f46e5'],
     stroke: { show: false },
     dataLabels: { enabled: false },
     legend: { position: 'bottom', labels: { colors: '#9ca3af', fontFamily: 'Montserrat' } },
