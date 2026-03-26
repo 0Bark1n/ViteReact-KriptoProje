@@ -1,0 +1,235 @@
+// ==========================================
+// 1. HEADER (ÜST MENÜ)
+// ==========================================
+.header {
+    background: var(--card-bg);
+    height: 75px;
+    display: flex;
+    align-items: center;
+    padding: 0 5%;
+    border-bottom: 1px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    .nav-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+    .logo {
+        font-weight: 800;
+        font-size: 1.7rem;
+        text-transform: uppercase;
+        span { color: #818cf8; }
+    }
+
+    .nav-menu { display: none !important; }
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    .action-btn {
+        background: none; border: none; color: var(--text-color);
+        font-size: 1.4rem; cursor: pointer; transition: 0.2s;
+        &:hover { color: #818cf8; }
+    }
+}
+
+// ==========================================
+// 2. DASHBOARD VE ANA YAPI
+// ==========================================
+.dashboard {
+    display: grid; 
+    grid-template-columns: 280px 1fr; 
+    gap: 35px;
+    padding: 35px;
+    max-width: 1500px;
+    margin: 0 auto;
+    align-items: start;
+    // Sayfa kısa olsa bile footer'ı aşağı itmek için:
+    min-height: calc(100vh - 400px); 
+}
+
+.sidebar-nav ul {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    li a {
+        display: flex; align-items: center; padding: 18px 22px;
+        color: var(--text-color); border-radius: 15px;
+        font-weight: 800; font-size: 1.1rem; transition: 0.2s;
+        
+        i { margin-right: 15px; font-size: 1.3rem; width: 25px; }
+        
+        // BURASI DA KOYU MOR OLACAK:
+        &:hover, &.active { background: #4f46e5; color: white; }
+    }
+}
+
+.content { width: 100%; }
+#dashboard-content { display: grid; gap: 30px; width: 100%; }
+.top-row { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+
+.panel {
+    min-height: 60vh; 
+}
+
+// ==========================================
+// 3. MAIN FOOTER
+// ==========================================
+.main-footer {
+    background: var(--card-bg);
+    padding: 60px 0 20px 0;
+    margin-top: 80px;
+    border-top: 1px solid var(--border-color);
+    width: 100%;
+    color: var(--text-color);
+
+    .footer-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        padding: 0 5%;
+        gap: 40px;
+    }
+
+    .footer-section {
+        flex: 1;
+        min-width: 250px;
+
+        h3 {
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        p {
+            opacity: 0.7;
+            line-height: 1.6;
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            li {
+                margin-bottom: 12px;
+                a {
+                    color: var(--text-color);
+                    opacity: 0.7;
+                    text-decoration: none;
+                    transition: 0.3s;
+                    font-size: 0.95rem;
+                    display: inline-block;
+                    &:hover {
+                        opacity: 1;
+                        color: #818cf8;
+                        transform: translateX(5px);
+                    }
+                }
+            }
+        }
+    }
+
+    .social-icons {
+        display: flex;
+        gap: 15px;
+        margin-top: 20px;
+        a {
+            color: var(--text-color);
+            font-size: 1.3rem;
+            opacity: 0.6;
+            transition: 0.3s;
+            &:hover { opacity: 1; color: #818cf8; transform: scale(1.1); }
+        }
+    }
+
+    .footer-bottom {
+        text-align: center;
+        margin-top: 50px;
+        padding-top: 25px;
+        border-top: 1px solid var(--border-color);
+        p { font-size: 0.85rem; opacity: 0.5; }
+    }
+}
+
+// ==========================================
+// 4. MOBİL UYUMLULUK (HEPSİ DAHİL)
+// ==========================================
+@media (max-width: 992px) {
+    html, body {
+        overflow-x: hidden !important; 
+        width: 100% !important;
+    }
+
+    * { box-sizing: border-box !important; }
+
+    .dashboard {
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100% !important;
+        padding: 15px !important; 
+        gap: 20px !important;
+    }
+
+    .top-row {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 20px !important;
+    }
+
+    // Mobil Menü (Sidebar)
+    .sidebar { width: 100% !important; overflow: hidden !important; }
+    .sidebar-nav ul {
+        display: flex !important;
+        flex-direction: row !important; 
+        overflow-x: auto !important;
+        padding: 5px 0 10px 0 !important;
+        gap: 10px !important;
+        -webkit-overflow-scrolling: touch;
+        li { flex-shrink: 0 !important; }
+        .submenu {
+            list-style: none; padding: 0; margin: 0; max-height: 0; overflow: hidden; transition: max-height 0.4s ease;
+            li a { display: flex; align-items: center; padding: 12px 20px 12px 55px; color: var(--text-color); text-decoration: none; font-size: 1rem; font-weight: 600; opacity: 0.6; border-radius: 10px; margin: 0 10px 5px 10px; transition: all 0.2s ease;
+                i { margin-right: 15px; width: 20px; }
+                
+                // ESKİSİ: &:hover, &.active { opacity: 1; background: #818cf8 !important; color: #ffffff !important; }
+                
+                // YENİSİ (Lighthouse Onaylı Koyu Mor):
+                &:hover, &.active { opacity: 1; background: #4f46e5 !important; color: #ffffff !important; }
+            }
+        }
+    }
+
+    // Footer Mobil Fix
+    .main-footer {
+        text-align: center;
+        .footer-container {
+            flex-direction: column !important;
+            align-items: center !important;
+        }
+        .social-icons { justify-content: center !important; }
+    }
+
+    // Kartlar ve Tablo
+    .balance-card, .chart-box, .trade-box, .history-table, .market-summary-card, .settings-card, .contributor-card {
+        width: 100% !important;
+        padding: 20px !important;
+    }
+    .table-responsive { width: 100% !important; overflow-x: auto !important; }
+    
+    .header { padding: 0 15px !important; }
+}
