@@ -1,12 +1,6 @@
 import React, { useState, useEffect, Suspense, lazy } from 'react';
 import './styles/main.scss';
 
-// Lokal Montserrat Font Ağırlıkları
-import '@fontsource/montserrat/400.css';
-import '@fontsource/montserrat/600.css';
-import '@fontsource/montserrat/700.css';
-import '@fontsource/montserrat/800.css';
-
 // Lokal FontAwesome İkonları
 import '@fortawesome/fontawesome-free/css/all.min.css';
 

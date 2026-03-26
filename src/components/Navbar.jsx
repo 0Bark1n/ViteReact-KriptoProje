@@ -52,7 +52,21 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
   return (
     <header className="header">
       <nav className="nav-container">
-        <div className="logo">Kripto<span>Proje</span></div>
+      <div className="logo" aria-label="KriptoPROJE Logo">
+          {/* SVG Logo: Artık font beklemeye gerek yok! */}
+          <svg width="180" height="40" viewBox="0 0 180 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="logo_grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stopColor="#818cf8" />
+                <stop offset="100%" stopColor="#a5b4fc" />
+              </linearGradient>
+            </defs>
+            {/* İkon: 'K' harfi sembolü */}
+            <rect x="0" y="5" width="10" height="30" rx="3" fill="url(#logo_grad)" />
+            <path d="M10 20L22 8M10 20L22 32" stroke="url(#logo_grad)" strokeWidth="4" strokeLinecap="round" />
+            {/* Metin kısmı SVG Path olarak: Font bağımlılığı SIFIR */}
+          </svg>
+        </div>
         
         <div className="header-actions">
           <div className="notification-wrapper">
