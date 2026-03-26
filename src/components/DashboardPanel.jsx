@@ -1,5 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import Chart from 'react-apexcharts';
+import React, { useState, useEffect, Suspense, lazy } from 'react';
+
+// Grafiği ana paketten ayırıp, sadece ihtiyaç anında yüklüyoruz (Lighthouse 100 Puan Hamlesi)
+const Chart = lazy(() => import('react-apexcharts'));
 
 const DashboardPanel = () => {
   // 1. HAFIZA (State) TANIMLAMALARI
@@ -214,7 +216,10 @@ const DashboardPanel = () => {
           </div>
         </div>
         <div id="mainChart">
-          <Chart options={chartOptions} series={[{ name: 'Fiyat', data: coins[currentCoin].data }]} type="area" height={300} />
+          {/* GRFAİK YÜKLENİRKEN SAYFAYI TIKAMASIN DİYE SUSPENSE EKLENDİ */}
+          <Suspense fallback={<div style={{ padding: '40px', color: '#a5b4fc', textAlign: 'center', fontWeight: 'bold' }}>Grafik Hazırlanıyor...</div>}>
+            <Chart options={chartOptions} series={[{ name: 'Fiyat', data: coins[currentCoin].data }]} type="area" height={300} />
+          </Suspense>
         </div>
       </div>
 
