@@ -1,11 +1,20 @@
 import { defineConfig } from 'vite'
-import react, { reactCompilerPreset } from '@vitejs/plugin-react'
-import babel from '@rolldown/plugin-babel'
+import react from '@vitejs/plugin-react'
 
-// https://vite.dev/config/
 export default defineConfig({
-  plugins: [
-    react(),
-    babel({ presets: [reactCompilerPreset()] })
-  ],
+  plugins: [react()],
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          // Grafik kütüphanesini ana koddan ayırıyoruz. 
+          // Sadece grafik sayfasına girilince yüklenecek.
+          vendor_charts: ['react-apexcharts', 'apexcharts'],
+          
+          // React'in çekirdek dosyalarını ayrı paketliyoruz
+          vendor_react: ['react', 'react-dom']
+        }
+      }
+    }
+  }
 })
