@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense, lazy } from 'react';
 import './styles/main.scss';
 
 // Lokal Montserrat Font Ağırlıkları
@@ -10,19 +10,19 @@ import '@fontsource/montserrat/800.css';
 // Lokal FontAwesome İkonları
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
-// Oluşturduğumuz Bileşenler
+// Sabit yüklenmesi gereken ana iskelet bileşenleri
 import Navbar from './components/Navbar';
 import Sidebar from './components/Sidebar';
-
-import DashboardPanel from './components/DashboardPanel';
-import RealApiPanel from './components/RealApiPanel';
-import CurrencyPanel from './components/CurrencyPanel';
-import SettingsPanel from './components/SettingsPanel';
-import ContributorsPanel from './components/ContributorsPanel';
-import AssetsPanel from './components/AssetsPanel';
-import HistoryPanel from './components/HistoryPanel';
-
 import Footer from './components/Footer';
+
+// Tıklanınca (Lazy) yüklenecek olan ağır paneller
+const DashboardPanel = lazy(() => import('./components/DashboardPanel'));
+const RealApiPanel = lazy(() => import('./components/RealApiPanel'));
+const CurrencyPanel = lazy(() => import('./components/CurrencyPanel'));
+const AssetsPanel = lazy(() => import('./components/AssetsPanel'));
+const HistoryPanel = lazy(() => import('./components/HistoryPanel'));
+const SettingsPanel = lazy(() => import('./components/SettingsPanel'));
+const ContributorsPanel = lazy(() => import('./components/ContributorsPanel'));
 
 function App() {
   // BÜTÜN USESTATE'LER BURADA, FONKSİYONUN İÇİNDE OLMALI!
@@ -53,19 +53,30 @@ function App() {
     return () => window.removeEventListener('trigger-notification', handleToast);
   }, []);
 
-  // Sekme Yönlendirmesi
+  // Sekme Yönlendirmesi (Lazy Load ile Optimize Edilmiş)
   const renderContent = () => {
-    switch (activeTab) {
-      case 'dashboard-content': return <DashboardPanel />;
-      case 'real-api-panel': return <RealApiPanel />;
-      case 'currency-panel': return <CurrencyPanel />;
-      case 'settings-panel': return <SettingsPanel />;
-      case 'contributors-panel': return <ContributorsPanel />;
-      case 'assets-panel': return <AssetsPanel />;
-      case 'history-panel': return <HistoryPanel />;
+    let ContentComponent;
 
-      default: return <DashboardPanel />;
+    switch (activeTab) {
+      case 'dashboard-content': ContentComponent = <DashboardPanel />; break;
+      case 'real-api-panel': ContentComponent = <RealApiPanel />; break;
+      case 'currency-panel': ContentComponent = <CurrencyPanel />; break;
+      case 'assets-panel': ContentComponent = <AssetsPanel />; break;
+      case 'history-panel': ContentComponent = <HistoryPanel />; break;
+      case 'settings-panel': ContentComponent = <SettingsPanel />; break;
+      case 'contributors-panel': ContentComponent = <ContributorsPanel />; break;
+      default: ContentComponent = <DashboardPanel />;
     }
+
+    return (
+      <Suspense fallback={
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '50vh', color: '#a5b4fc', fontSize: '1.2rem', fontWeight: 'bold' }}>
+          Panel Yükleniyor...
+        </div>
+      }>
+        {ContentComponent}
+      </Suspense>
+    );
   };
 
   return (
