@@ -52,7 +52,7 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
   return (
     <header className="header">
       <nav className="nav-container">
-      <div className="logo" aria-label="KriptoPROJE Logo">
+      <div className="logo">
           {/* SVG Logo: Artık font beklemeye gerek yok! */}
           <svg width="180" height="40" viewBox="0 0 180 40" fill="none" xmlns="http://www.w3.org/2000/svg">
             <defs>

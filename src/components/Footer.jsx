@@ -6,7 +6,6 @@ const Footer = () => {
       <div className="footer-container">
         
         <div className="footer-section about">
-          <h2 className="logo">KRİPTO<span>PROJE</span></h2>
           <p>Adana Alparslan Türkeş Bilim ve Teknoloji Üniversitesi | Bilişim Teknolojileri Meslek Yüksekokulu | Yazılım, Uygulama Geliştirme ve Çözümleme Bölümü | Ön-Yüz Yazılım Geliştirme</p>
           <div className="social-icons">
             <a href="https://0bark1n.github.io/OkulProjesi_Kripto/" aria-label="Siteyi yenile"><i className="fab fa-weebly"></i></a>
