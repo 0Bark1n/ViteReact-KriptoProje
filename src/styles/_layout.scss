@@ -30,14 +30,6 @@ body, #root {
         max-width: 1400px;
         margin: 0 auto;
     }
-
-    .logo {
-        font-weight: 800;
-        font-size: 1.7rem;
-        text-transform: uppercase;
-        span { color: #a5b4fc !important; }
-    }
-
     .nav-menu { display: none !important; }
 }
 
@@ -49,8 +41,20 @@ body, #root {
     .action-btn {
         background: none; border: none; color: var(--text-color);
         font-size: 1.4rem; cursor: pointer; transition: 0.2s;
-        &:hover { color: #4f46e5; }
+        &:hover { color: var(--primary-color); }
     }
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+
+  .navbar-logo-img {
+    height: 150px; // Eski yüksekliği koruyoruz
+    width: auto;
+    object-fit: contain;
+    transition: filter 0.3s ease; // Tema değişirken yumuşak bir geçiş için
+  }
 }
 
 // ==========================================
@@ -97,7 +101,7 @@ body, #root {
             li {
                 margin-bottom: 12px;
                 a { color: var(--text-color); opacity: 0.7; text-decoration: none; transition: 0.3s; font-size: 0.95rem; display: inline-block;
-                    &:hover { opacity: 1; color: #4f46e5; transform: translateX(5px); }
+                    &:hover { opacity: 1; color: var(--primary-color); transform: translateX(5px); }
                 }
             }
         }
@@ -106,7 +110,7 @@ body, #root {
     .social-icons {
         display: flex; gap: 15px; margin-top: 20px;
         a { color: var(--text-color); font-size: 1.3rem; opacity: 0.6; transition: 0.3s;
-            &:hover { opacity: 1; color: #4f46e5; transform: scale(1.1); }
+            &:hover { opacity: 1; color: var(--primary-color); transform: scale(1.1); }
         }
     }
 
@@ -135,7 +139,7 @@ body, #root {
             width: 100%; display: flex; justify-content: space-between; align-items: center; background: transparent !important; border: none !important; box-shadow: none !important; padding: 15px 20px; color: var(--text-color); font-size: 1.1rem; font-weight: 800; cursor: pointer; outline: none !important;
             box-sizing: border-box; 
             
-            .title { display: flex; align-items: center; i { margin-right: 15px; color: #4f46e5; width: 25px; text-align: center;} }
+            .title { display: flex; align-items: center; i { margin-right: 15px; color: var(--primary-color); width: 25px; text-align: center;} }
             .arrow { transition: transform 0.3s ease; opacity: 0.6; }
             &:hover { background: rgba(128, 128, 128, 0.05) !important; }
         }
@@ -153,13 +157,13 @@ body, #root {
                 box-sizing: border-box; 
                 
                 i { margin-right: 15px; width: 20px; text-align: center;}
-                &:hover, &.active { opacity: 1; background: #4f46e5 !important; color: #ffffff !important; }
+                &:hover, &.active { opacity: 1; background: var(--primary-color) !important; color: #ffffff !important; }
             }
         }
         
         &.open { 
             background: rgba(128, 128, 128, 0.04); border: 1px solid var(--border-color);
-            .menu-toggle .arrow { transform: rotate(180deg); color: #4f46e5; opacity: 1; }
+            .menu-toggle .arrow { transform: rotate(180deg); color: var(--primary-color); opacity: 1; }
             .submenu { max-height: 500px; padding-bottom: 10px; }
         }
     }
@@ -172,7 +176,7 @@ body, #root {
         display: flex; align-items: center; padding: 18px 22px; color: var(--text-color); border-radius: 15px; font-weight: 800; font-size: 1.1rem; transition: 0.2s;
         width: 100%; box-sizing: border-box; text-decoration: none;
         i { margin-right: 15px; font-size: 1.3rem; width: 25px; text-align: center; }
-        &:hover, &.active { background: #4f46e5; color: white; }
+        &:hover, &.active { background: var(--primary-color); color: white; }
     }
 }
 

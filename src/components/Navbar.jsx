@@ -54,11 +54,11 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
     <header className="header">
       <nav className="nav-container">
         <div className="logo">
-          <img 
-            src={myCustomLogo} 
-            alt="KriptoProje Logo" 
-            style={{ height: '150px', width: 'auto', objectFit: 'contain' }}
-          />
+              <img 
+                src={myCustomLogo} 
+                alt="KriptoProje Logo" 
+                className="navbar-logo-img" 
+              />
         </div>
         
         <div className="header-actions">

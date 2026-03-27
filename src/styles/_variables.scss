@@ -1,14 +1,32 @@
-$primary: #4f46e5;
+$primary: var(--primary-color);
 $success: #22c55e;
 $danger: #ef4444;
 $warning: #f7931a;
 
-:root {
-  --bg-color: #0f172a;
-  --card-bg: #1e293b;
-  --text-color: #f8fafc;
-  --border-color: rgba(255, 255, 255, 0.1);
-  --logo-invert: 1;
+:root, html[data-theme="dark"] {
+    // Koyu modda orijinal mor rengimiz (Siyah olma hatasının çözümü)
+    --primary-color: #4f46e5; 
+    
+    --bg-color: #0f172a;
+    --card-bg: #1e293b;
+    --text-color: #f8fafc;
+    --border-color: rgba(255, 255, 255, 0.1);
+}
+
+// AYDINLIK MOD (Light Theme)
+html:not([data-theme="dark"]) {
+    // Daha açık, parlak ve canlı bir Altın (Gold) rengi
+    --primary-color: #dfb63e; 
+    
+    --bg-color: #f8fafc;       
+    --card-bg: #ffffff;       
+    --text-color: #0f172a;    
+    --border-color: #e2e8f0;  
+}
+
+// Logonun aydınlık modda siyah ve altın olması
+html:not([data-theme="dark"]) .logo img {
+    filter: invert(1) brightness(0.85); 
 }
 
 [data-theme="light"] {

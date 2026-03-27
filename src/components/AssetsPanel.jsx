@@ -54,9 +54,9 @@ const AssetsPanel = () => {
           size: '75%',
           labels: {
             show: true,
-            name: { show: true, color: '#9ca3af' },
-            value: { show: true, color: '#f8fafc', formatter: (val) => "$" + val.toLocaleString('tr-TR', { minimumFractionDigits: 2 }) },
-            total: { show: true, showAlways: true, label: 'Toplam Varlık', color: '#9ca3af', formatter: () => "$" + assets.toplam.toLocaleString('tr-TR', { minimumFractionDigits: 2 }) }
+            name: { show: true, color: '#223554' },
+            value: { show: true, color: '#1aff00', formatter: (val) => "$" + val.toLocaleString('tr-TR', { minimumFractionDigits: 2 }) },
+            total: { show: true, showAlways: true, label: 'Toplam Varlık', color: '#c3ff00', formatter: () => "$" + assets.toplam.toLocaleString('tr-TR', { minimumFractionDigits: 2 }) }
           }
         }
       }
