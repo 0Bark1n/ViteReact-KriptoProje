@@ -50,14 +50,23 @@ function App() {
     let ContentComponent;
 
     switch (activeTab) {
-      case 'dashboard-content': ContentComponent = <DashboardPanel />; break;
-      case 'real-api-panel': ContentComponent = <RealApiPanel />; break;
+      case 'dashboard-content': ContentComponent = <DashboardPanel type="crypto" />; break;
+      case 'real-api-panel': ContentComponent = <RealApiPanel type="crypto" />; break;
+      
+      // YENİ MADEN EKRANLARI 
+      case 'metals-dashboard': ContentComponent = <DashboardPanel type="metals" />; break;
+      case 'metals-api': ContentComponent = <RealApiPanel type="metals" />; break;
+      
+      // EKSİK OLAN SATIRI BURAYA EKLEDİK:
+      case 'metals-history': ContentComponent = <HistoryPanel />; break; 
+      
+      // Ortak olan sekmeler
       case 'currency-panel': ContentComponent = <CurrencyPanel />; break;
       case 'assets-panel': ContentComponent = <AssetsPanel />; break;
       case 'history-panel': ContentComponent = <HistoryPanel />; break;
       case 'settings-panel': ContentComponent = <SettingsPanel />; break;
       case 'contributors-panel': ContentComponent = <ContributorsPanel />; break;
-      default: ContentComponent = <DashboardPanel />;
+      default: ContentComponent = <DashboardPanel type="crypto" />;
     }
 
     return (
