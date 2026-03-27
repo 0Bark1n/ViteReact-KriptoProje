@@ -1,6 +1,14 @@
+body, #root {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+}
+
 // ==========================================
 // 1. HEADER (ÜST MENÜ)
 // ==========================================
+
 .header {
     background: var(--card-bg);
     height: 75px;
@@ -54,8 +62,11 @@
     max-width: 1500px;
     margin: 0 auto;
     align-items: start;
-    // Sayfa kısa olsa bile footer'ı aşağı itmek için:
-    min-height: calc(100vh - 400px); 
+    
+    // YENİ EKLENEN KISIM: 
+    // Sayfa içeriği az olsa bile boşluğu doldurur, footer'ı aşağı iter.
+    flex: 1; 
+    width: 100%; // Genişliği garantiye almak için
 }
 
 .sidebar-nav ul {
