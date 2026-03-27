@@ -1,75 +1,40 @@
-<div align="center">
-  <img src="./src/assets/Logo.png" alt="KriptoProje Logo" height="70" />
-  
-  <br />
-  <br />
+# 📈 CTRL Crypto & Metals Portfolio Dashboard
 
-  <img src="./src/assets/ATU_Logo.jpg" alt="ATÜ Logo" height="100" />
+Modern, yüksek performanslı ve tam duyarlı (responsive) bir Dijital Varlık ve Portföy Yönetim Simülasyonu. Bu proje, kullanıcıların kripto paralar ve değerli madenler üzerinden yatırımlarını yönetebileceği, gerçek piyasa verilerini ve gelişmiş UI/UX dinamiklerini barındıran kapsamlı bir Front-End uygulamasıdır.
 
-  <h1>📈 KriptoProje - React Tabanlı Dijital Finans Arayüzü</h1>
+## 🚀 Proje Vizyonu ve Mimari Yaklaşım
 
-  <p>
-    <img src="https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB" alt="React" />
-    <img src="https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white" alt="Vite" />
-    <img src="https://img.shields.io/badge/SCSS-hotpink.svg?style=for-the-badge&logo=SASS&logoColor=white" alt="SCSS" />
-    <img src="https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E" alt="JavaScript" />
-  </p>
-</div>
+Bu proje sadece statik bir arayüz değil; **Component Reusability (Bileşen Yeniden Kullanılabilirliği)** ve **State Management (Durum Yönetimi)** prensiplerinin uç noktada kullanıldığı bir mühendislik örneğidir. 
 
-Adana Alparslan Türkeş Bilim ve Teknoloji Üniversitesi (ATÜ), **Ön Yüz Yazılım Geliştirme** bölümü, **İleri Web Tasarımı** dersi kapsamında geliştirilmiş; modern, yüksek performanslı ve modüler yapıya sahip bir kripto borsa terminali projesidir.
+Aynı arayüz bileşenleri (`DashboardPanel`, `RealApiPanel`) kendilerine gönderilen `props` değerlerine göre ("crypto" veya "metals") tamamen farklı veri setleri, grafikler ve renk şemaları ile çalışacak şekilde akıllı hale getirilmiştir.
 
-🌐 **Canlı Demo:** [Projeyi Görüntüle](https://vite-react-kripto-proje.vercel.app/)
+## ✨ Temel Özellikler
 
----
+* **Çift Modlu Yatırım Paneli:** Kripto (BTC, ETH) ve Değerli Madenler (XAU, XAG) için özelleştirilmiş alım/satım simülasyonları.
+* **Ortak Cüzdan Mimarisi (Single Source of Truth):** Tüm işlemler ortak bir banka bakiyesinden (`localStorage`) yönetilir. 
+* **Gerçek & Simüle Piyasalar:**
+  * *Kripto:* Binance REST API üzerinden canlı kline (mum) verisi çekimi.
+  * *Maden:* Gerçekçi volatilite algoritmaları ile tarihsel ve canlı veri simülasyonu (Random Walk Algorithm).
+* **Dinamik Tema Motoru (Dark/Light):** CSS Değişkenleri (`var(--)`) kullanılarak yazılmış, açık temada *Altın (Gold)* vurgulara sahip akıllı tema geçişi.
+* **Bildirim Sistemi (Toast):** Özelleştirilmiş Custom Event fırlatıcıları ile sistem genelinde asenkron hata ve başarı bildirimleri.
+* **Kalıcı Veri (Persistence):** İşlem geçmişi, varlık dağılımları ve kullanıcı tercihleri `localStorage` ile tarayıcıda tutulur.
 
-## 🚀 Öne Çıkan Özellikler
+## 🛠 Kullanılan Teknolojiler & Kütüphaneler
 
-Bu proje, modern Front-End teknolojileri (React & Vite) kullanılarak "Bileşen Tabanlı" (Component-based) bir mimari ile sıfırdan inşa edilmiştir.
+| Teknoloji | Kullanım Amacı |
+| :--- | :--- |
+| **React.js** | Kullanıcı arayüzü ve Component mimarisi |
+| **SCSS (Sass)** | Modüler, değişken tabanlı ve yönetilebilir stil mimarisi |
+| **ApexCharts** | İnteraktif Area ve Donut (Dominasyon) grafikleri |
+| **React Suspense & Lazy** | Ağır bileşenlerin ve grafiklerin sonradan yüklenmesi (Code Splitting) |
+| **FontAwesome** | Vektörel ikon setleri |
+| **Fetch API** | Binance üzerinden asenkron veri çekimi |
 
-* **Modüler React Bileşenleri (Components):** Uygulama `DashboardPanel`, `AssetsPanel`, `CurrencyPanel` gibi birbirinden bağımsız, yeniden kullanılabilir ve state-driven (durum yönetimli) bileşenlere ayrılmıştır.
-* **Gelişmiş Performans Optimizasyonu:** Lighthouse skoru maksimize edilmiş; Vite config üzerinden `Terser` ile kod küçültme, `ManualChunks` ile Vendor/App ayrımı ve Preload stratejileri uygulanarak "Kritik Yol Gecikmesi" (Critical Request Chain) minimize edilmiştir.
-* **Dinamik Veri Akışı:** Gerçek piyasa dinamiklerini simüle eden, anlık güncellenen kripto para fiyatları ve cüzdan bakiyesi hesaplamaları (`RealApiPanel`).
-* **Karanlık Tema (Dark Mode) Mimarisi:** SCSS `_variables.scss` modülü üzerinden CSS Variable'lar kullanılarak sisteme entegre edilmiş, tüm bileşenlere duyarlı tema motoru.
-* **Responsive & Interaktif UI:** Mobil öncelikli (Mobile-First) tasarlanmış açılır-kapanır `Sidebar` navigasyonu, dinamik `Navbar` ve bildirim (Notification) sistemi.
-* **Modüler SCSS Mimarisi (7-1 Pattern):** CSS kodları `_layout.scss`, `_components.scss`, `_variables.scss` gibi modüllere ayrılarak derlenmiş, temiz kod (Clean Code) prensiplerine uyulmuştur.
-* **Kusursuz SEO & Meta Optimizasyonu:** Open Graph (OG), Semantic HTML ve arama motoru botları için gerekli tüm meta etiketleme (metadata) yapılmıştır.
+## ❌ Kullanılmayanlar (Bilinçli Tercihler)
 
----
+* **Redux / Context API:** Proje ölçeği `localStorage` ve React State ile yönetilebilecek seviyede tutularak gereksiz "Over-engineering" (aşırı mühendislik) engellendi.
+* **Bootstrap / Tailwind:** CSS yeteneklerini ve SCSS modülerliğini tam anlamıyla sergilemek adına hiçbir hazır stil kütüphanesi (framework) kullanılmadı. Her şey sıfırdan (`from scratch`) kodlandı.
+* **Ağır Resim Dosyaları:** İkonlar ve logolar (BTC, ETH vb.) inline SVG veya ikon fontları olarak kullanılarak HTTP istekleri minimize edildi.
 
-## 🛠️ Kullanılan Teknolojiler
-
-* **Framework & Build Tool:** React.js, Vite
-* **Markup & Stil:** HTML5 (Semantic), CSS3, SCSS (Sass Preprocessor)
-* **Programlama Dili:** JavaScript (ES6+ / JSX)
-* **Görsel & Ses:** FontAwesome (İkonlar), Google Fonts (Montserrat), HTML5 Audio API (Bildirim Sesleri)
-* **Dağıtım (Deployment):** Vercel (CI/CD Entegrasyonlu)
-
----
-
-## 📁 Proje Dizin Yapısı
-
-```text
-📦 src
- ┣ 📂 assets/              # Statik dosyalar (İkonlar, Resimler, Sesler)
- ┃ ┣ 📜 ATU_Logo.jpg
- ┃ ┣ 📜 notif.mp3          # Bildirim sesi
- ┃ ┗ 📜 ... (diğer görseller)
- ┣ 📂 components/          # Bağımsız React Bileşenleri
- ┃ ┣ 📜 AssetsPanel.jsx    # Cüzdan ve varlık dağılımı
- ┃ ┣ 📜 ContributorsPanel.jsx # Geliştirici ekibi alanı
- ┃ ┣ 📜 CurrencyPanel.jsx  # Kripto para kurları ve değişimleri
- ┃ ┣ 📜 DashboardPanel.jsx # Ana kontrol paneli
- ┃ ┣ 📜 Footer.jsx
- ┃ ┣ 📜 HistoryPanel.jsx   # İşlem geçmişi tablosu
- ┃ ┣ 📜 Navbar.jsx         # Üst gezinme çubuğu
- ┃ ┣ 📜 RealApiPanel.jsx   # Canlı veri akışı paneli
- ┃ ┣ 📜 SettingsPanel.jsx  # Kullanıcı ve tema ayarları
- ┃ ┗ 📜 Sidebar.jsx        # Sol navigasyon menüsü
- ┣ 📂 styles/              # Parçalanmış (Partial) SCSS modülleri
- ┃ ┣ 📜 _components.scss   # Bileşenlere özel stiller
- ┃ ┣ 📜 _layout.scss       # Grid ve Flexbox yerleşimleri
- ┃ ┣ 📜 _notifications.scss# Bildirim arayüzü stilleri
- ┃ ┣ 📜 _variables.scss    # Renk paleti, fontlar ve temalar
- ┃ ┗ 📜 main.scss          # Tüm SCSS dosyalarını toplayan ana dosya
- ┣ 📜 App.jsx              # Ana bileşen (Component Tree Root)
- ┗ 📜 main.jsx             # React DOM Render (Init) ve Vite giriş noktası
+## Lighthouse Raporu
+EKLENECEK
