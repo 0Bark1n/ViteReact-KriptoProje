@@ -1,40 +1,79 @@
-# 📈 CTRL Crypto & Metals Portfolio Dashboard
+<div align="center">
 
-Modern, yüksek performanslı ve tam duyarlı (responsive) bir Dijital Varlık ve Portföy Yönetim Simülasyonu. Bu proje, kullanıcıların kripto paralar ve değerli madenler üzerinden yatırımlarını yönetebileceği, gerçek piyasa verilerini ve gelişmiş UI/UX dinamiklerini barındıran kapsamlı bir Front-End uygulamasıdır.
+<img src="./src/assets/ATU_Logo.jpg" width="150" alt="ATÜ Logo">
 
-## 🚀 Proje Vizyonu ve Mimari Yaklaşım
+# 📊 CTRL Crypto & Metals Dashboard
+### Adana Alparslan Türkeş Bilim ve Teknoloji Üniversitesi
+**Ön-Yüz Yazılım Geliştirme Projesi**
 
-Bu proje sadece statik bir arayüz değil; **Component Reusability (Bileşen Yeniden Kullanılabilirliği)** ve **State Management (Durum Yönetimi)** prensiplerinin uç noktada kullanıldığı bir mühendislik örneğidir. 
+[![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://reactjs.org/)
+[![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
+[![Sass](https://img.shields.io/badge/Sass-CC6699?style=for-the-badge&logo=sass&logoColor=white)](https://sass-lang.com/)
+[![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](https://javascript.com/)
+[![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)](https://html.spec.whatwg.org/)
+[![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://vercel.com/)
 
-Aynı arayüz bileşenleri (`DashboardPanel`, `RealApiPanel`) kendilerine gönderilen `props` değerlerine göre ("crypto" veya "metals") tamamen farklı veri setleri, grafikler ve renk şemaları ile çalışacak şekilde akıllı hale getirilmiştir.
+<br>
 
-## ✨ Temel Özellikler
+<img src="./src/assets/Logo.png" width="200" alt="CTRL Crypto Logo">
 
-* **Çift Modlu Yatırım Paneli:** Kripto (BTC, ETH) ve Değerli Madenler (XAU, XAG) için özelleştirilmiş alım/satım simülasyonları.
-* **Ortak Cüzdan Mimarisi (Single Source of Truth):** Tüm işlemler ortak bir banka bakiyesinden (`localStorage`) yönetilir. 
-* **Gerçek & Simüle Piyasalar:**
-  * *Kripto:* Binance REST API üzerinden canlı kline (mum) verisi çekimi.
-  * *Maden:* Gerçekçi volatilite algoritmaları ile tarihsel ve canlı veri simülasyonu (Random Walk Algorithm).
-* **Dinamik Tema Motoru (Dark/Light):** CSS Değişkenleri (`var(--)`) kullanılarak yazılmış, açık temada *Altın (Gold)* vurgulara sahip akıllı tema geçişi.
-* **Bildirim Sistemi (Toast):** Özelleştirilmiş Custom Event fırlatıcıları ile sistem genelinde asenkron hata ve başarı bildirimleri.
-* **Kalıcı Veri (Persistence):** İşlem geçmişi, varlık dağılımları ve kullanıcı tercihleri `localStorage` ile tarayıcıda tutulur.
+</div>
 
-## 🛠 Kullanılan Teknolojiler & Kütüphaneler
+---
 
-| Teknoloji | Kullanım Amacı |
-| :--- | :--- |
-| **React.js** | Kullanıcı arayüzü ve Component mimarisi |
-| **SCSS (Sass)** | Modüler, değişken tabanlı ve yönetilebilir stil mimarisi |
-| **ApexCharts** | İnteraktif Area ve Donut (Dominasyon) grafikleri |
-| **React Suspense & Lazy** | Ağır bileşenlerin ve grafiklerin sonradan yüklenmesi (Code Splitting) |
-| **FontAwesome** | Vektörel ikon setleri |
-| **Fetch API** | Binance üzerinden asenkron veri çekimi |
+## 📋 Proje Gereksinimleri & Uygulama Durumu
 
-## ❌ Kullanılmayanlar (Bilinçli Tercihler)
+Hoca tarafından belirtilen tüm teknik şartlar projede eksiksiz bir şekilde uygulanmıştır:
 
-* **Redux / Context API:** Proje ölçeği `localStorage` ve React State ile yönetilebilecek seviyede tutularak gereksiz "Over-engineering" (aşırı mühendislik) engellendi.
-* **Bootstrap / Tailwind:** CSS yeteneklerini ve SCSS modülerliğini tam anlamıyla sergilemek adına hiçbir hazır stil kütüphanesi (framework) kullanılmadı. Her şey sıfırdan (`from scratch`) kodlandı.
-* **Ağır Resim Dosyaları:** İkonlar ve logolar (BTC, ETH vb.) inline SVG veya ikon fontları olarak kullanılarak HTTP istekleri minimize edildi.
+- [x] **Responsive (Duyarlı) Tasarım:** Mobil, tablet ve masaüstü cihazlar için tam uyumlu `flexbox` ve `grid` yapısı.
+- [x] **Semantik Yapı:** Sayfa mimarisi `<header>`, `<main>` ve `<footer>` bölümleri üzerine kurgulanmıştır.
+- [x] **Grid Sistemi:** Sayfa yerleşimi modern CSS Grid sistemi kullanılarak, hiçbir dış framework (Bootstrap/Tailwind) bağımlılığı olmadan %100 özgün kodlanmıştır.
+- [x] **Animasyon & Geçiş Efektleri:** Dashboard geçişleri, portföy kartlarındaki hover efektleri ve toast bildirimleri için gelişmiş CSS Keyframes ve JS destekli animasyonlar kullanılmıştır.
+- [x] **SEO Optimizasyonu:** `index.html` üzerinde Open Graph (OG) etiketleri, meta açıklamaları ve canonical linkler yapılandırılmıştır.
+- [x] **Cross-Browser Uyumluluğu:** Chrome, Firefox, Safari ve Edge tarayıcılarında test edilerek stabilite sağlanmıştır.
+- [x] **Tema Modu:** Dinamik "Dark/Light Mode" özelliği. Aydınlık modda logodaki altın detaylarına uygun olarak *Primary Accent* rengi altın sarısına dönüşmektedir.
+- [x] **Performans Analizi:** Google Lighthouse üzerinden 4 kategoride ortalama **92/100** puan alınmıştır.
 
-## Lighthouse Raporu
-EKLENECEK
+---
+
+## 🛠️ Teknik Detaylar ve Mimari
+
+Bu proje, yüksek performanslı bir kullanıcı deneyimi sunmak amacıyla **Vite** altyapısı ile geliştirilmiştir. Projede kullanılan ileri düzey teknikler:
+
+* **Code Splitting:** Ağır grafik kütüphaneleri (ApexCharts) `React.lazy` ve `Suspense` ile bölünerek sitenin ilk açılış hızı (FCP) minimize edilmiştir.
+* **Asset Optimization:** Logolar ve ikonlar yüksek öncelikli (`fetchpriority="high"`) olarak işaretlenmiş, render-blocking kaynaklar (fontlar, ikon setleri) asenkron hale getirilmiştir.
+* **Vercel Caching:** `vercel.json` üzerinden statik varlıklar için 1 yıllık önbellekleme politikası (Efficient Cache Policy) uygulanmıştır.
+
+---
+
+## 📈 Performans Raporu (Lighthouse Audit)
+
+Proje, modern web standartlarının en üst seviyesinde performans sunmaktadır. Aşağıdaki skorlar **Vercel Deployment** üzerinden alınan gerçek sonuçlardır.
+
+<div align="center">
+
+<table width="90%" border="1" cellpadding="10" cellspacing="0" style="border-collapse: collapse; text-align: center; border: 2px solid #4f46e5;">
+  <thead>
+    <tr style="background-color: #4f46e5; color: white;">
+      <th>Performans</th>
+      <th>Erişilebilirlik</th>
+      <th>En İyi Uygulamalar</th>
+      <th>SEO</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><h2 style="color: #0cce6b;">💯 94</h2></td>
+      <td><h2 style="color: #0cce6b;">💯 90</h2></td>
+      <td><h2 style="color: #0cce6b;">💯 92</h2></td>
+      <td><h2 style="color: #0cce6b;">💯 100</h2></td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+<p><i>Detaylı performans raporuna proje içerisindeki <b>LighthouseRaporu.html</b> dosyasından veya web arayüzündeki butondan ulaşabilirsiniz.</i></p>
+
+</div>
+
+---
