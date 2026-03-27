@@ -1,9 +1,6 @@
 import React, { useState, useEffect, Suspense, lazy } from 'react';
 import './styles/main.scss';
 
-// Lokal FontAwesome İkonları
-import '@fortawesome/fontawesome-free/css/all.min.css';
-
 // Sabit yüklenmesi gereken ana iskelet bileşenleri
 import Navbar from './components/Navbar';
 import Sidebar from './components/Sidebar';

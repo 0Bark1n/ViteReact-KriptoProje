@@ -1,3 +1,6 @@
+// ==========================================
+// KÖK YAPI (Footer'ı en alta iten sihir)
+// ==========================================
 body, #root {
     display: flex;
     flex-direction: column;
@@ -8,7 +11,6 @@ body, #root {
 // ==========================================
 // 1. HEADER (ÜST MENÜ)
 // ==========================================
-
 .header {
     background: var(--card-bg);
     height: 75px;
@@ -56,17 +58,18 @@ body, #root {
 // ==========================================
 .dashboard {
     display: grid; 
-    grid-template-columns: 280px 1fr; 
+    grid-template-columns: 280px 1fr;
     gap: 35px;
     padding: 35px;
     max-width: 1500px;
     margin: 0 auto;
     align-items: start;
     
-    // YENİ EKLENEN KISIM: 
+    // LIGHTHOUSE CLS ÇÖZÜMÜ: 
     // Sayfa içeriği az olsa bile boşluğu doldurur, footer'ı aşağı iter.
     flex: 1; 
-    width: 100%; // Genişliği garantiye almak için
+    width: 100%; 
+    min-height: 85vh; 
 }
 
 .sidebar-nav ul {
@@ -81,7 +84,6 @@ body, #root {
         
         i { margin-right: 15px; font-size: 1.3rem; width: 25px; }
         
-        // BURASI DA KOYU MOR OLACAK:
         &:hover, &.active { background: #4f46e5; color: white; }
     }
 }
@@ -202,7 +204,6 @@ body, #root {
         gap: 20px !important;
     }
 
-    // Mobil Menü (Sidebar)
     .sidebar { width: 100% !important; overflow: hidden !important; }
     .sidebar-nav ul {
         display: flex !important;
@@ -216,16 +217,11 @@ body, #root {
             list-style: none; padding: 0; margin: 0; max-height: 0; overflow: hidden; transition: max-height 0.4s ease;
             li a { display: flex; align-items: center; padding: 12px 20px 12px 55px; color: var(--text-color); text-decoration: none; font-size: 1rem; font-weight: 600; opacity: 0.6; border-radius: 10px; margin: 0 10px 5px 10px; transition: all 0.2s ease;
                 i { margin-right: 15px; width: 20px; }
-                
-                // ESKİSİ: &:hover, &.active { opacity: 1; background: #4f46e5 !important; color: #ffffff !important; }
-                
-                // YENİSİ (Lighthouse Onaylı Koyu Mor):
                 &:hover, &.active { opacity: 1; background: #4f46e5 !important; color: #ffffff !important; }
             }
         }
     }
 
-    // Footer Mobil Fix
     .main-footer {
         text-align: center;
         .footer-container {
@@ -235,7 +231,6 @@ body, #root {
         .social-icons { justify-content: center !important; }
     }
 
-    // Kartlar ve Tablo
     .balance-card, .chart-box, .trade-box, .history-table, .market-summary-card, .settings-card, .contributor-card {
         width: 100% !important;
         padding: 20px !important;
@@ -243,4 +238,31 @@ body, #root {
     .table-responsive { width: 100% !important; overflow-x: auto !important; }
     
     .header { padding: 0 15px !important; }
+}
+
+// 6 ve 7 Numaralı bölümlerini koruyorum (Yukarıdaki kopyalarını temizledim)
+.sidebar-nav {
+    width: 100%;
+    .accordion-menu { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 15px; }
+    .menu-group {
+        background: transparent; border-radius: 15px; overflow: hidden; transition: all 0.3s ease;
+        .menu-toggle {
+            appearance: none !important; -webkit-appearance: none !important; -moz-appearance: none !important;
+            width: 100%; display: flex; justify-content: space-between; align-items: center; background: transparent !important; border: none !important; box-shadow: none !important; padding: 15px 20px; color: var(--text-color); font-size: 1.1rem; font-weight: 800; cursor: pointer; outline: none !important;
+            .title { display: flex; align-items: center; i { margin-right: 15px; color: #4f46e5; width: 25px; } }
+            .arrow { transition: transform 0.3s ease; opacity: 0.6; }
+            &:hover { background: rgba(128, 128, 128, 0.05) !important; }
+        }
+        .submenu {
+            list-style: none; padding: 0; margin: 0; max-height: 0; overflow: hidden; transition: max-height 0.4s ease;
+            li a { display: flex; align-items: center; padding: 12px 20px 12px 55px; color: var(--text-color); text-decoration: none; font-size: 1rem; font-weight: 600; opacity: 0.6; border-radius: 10px; margin: 0 10px 5px 10px; transition: all 0.2s ease;
+                i { margin-right: 15px; width: 20px; }
+                &:hover, &.active { opacity: 1; background: #4f46e5 !important; color: #ffffff !important; }
+            }
+        }
+        &.open { background: rgba(128, 128, 128, 0.04); border: 1px solid var(--border-color);
+            .menu-toggle .arrow { transform: rotate(180deg); color: #4f46e5; opacity: 1; }
+            .submenu { max-height: 500px; padding-bottom: 10px; }
+        }
+    }
 }
