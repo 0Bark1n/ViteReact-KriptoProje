@@ -8,8 +8,8 @@ const Footer = () => {
         <div className="footer-section about">
           <p>Adana Alparslan Türkeş Bilim ve Teknoloji Üniversitesi | Bilişim Teknolojileri Meslek Yüksekokulu | Yazılım, Uygulama Geliştirme ve Çözümleme Bölümü | Ön-Yüz Yazılım Geliştirme</p>
           <div className="social-icons">
-            <a href="https://0bark1n.github.io/OkulProjesi_Kripto/" aria-label="Siteyi yenile"><i className="fab fa-weebly"></i></a>
-            <a href="https://github.com/0Bark1n/OkulProjesi_Kripto" aria-label="GitHub Hesabına Git" target="_blank" rel="noopener noreferrer"><i className="fab fa-github"></i></a>
+            <a href="https://vite-react-kripto-proje.vercel.app/" aria-label="Siteyi yenile"><i className="fab fa-weebly"></i></a>
+            <a href="https://github.com/0Bark1n/ViteReact-KriptoProje" aria-label="GitHub Hesabına Git" target="_blank" rel="noopener noreferrer"><i className="fab fa-github"></i></a>
           </div>
         </div>
 

@@ -66,34 +66,10 @@ body, #root {
     align-items: start;
     
     // LIGHTHOUSE CLS ÇÖZÜMÜ: 
-    // Sayfa içeriği az olsa bile boşluğu doldurur, footer'ı aşağı iter.
     flex: 1; 
     width: 100%; 
     min-height: 85vh; 
-}
-
-.sidebar-nav ul {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-
-    li a {
-        display: flex; align-items: center; padding: 18px 22px;
-        color: var(--text-color); border-radius: 15px;
-        font-weight: 800; font-size: 1.1rem; transition: 0.2s;
-        
-        i { margin-right: 15px; font-size: 1.3rem; width: 25px; }
-        
-        &:hover, &.active { background: #4f46e5; color: white; }
-    }
-}
-
-.content { width: 100%; }
-#dashboard-content { display: grid; gap: 30px; width: 100%; }
-.top-row { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
-
-.panel {
-    min-height: 60vh; 
+    box-sizing: border-box; // EKLENDİ: Taşmaları engeller
 }
 
 // ==========================================
@@ -106,163 +82,137 @@ body, #root {
     border-top: 1px solid var(--border-color);
     width: 100%;
     color: var(--text-color);
+    box-sizing: border-box;
 
     .footer-container {
-        max-width: 1400px;
-        margin: 0 auto;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        padding: 0 5%;
-        gap: 40px;
+        max-width: 1400px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; padding: 0 5%; gap: 40px;
     }
 
     .footer-section {
-        flex: 1;
-        min-width: 250px;
-
-        h3 {
-            font-size: 1.2rem;
-            margin-bottom: 25px;
-            font-weight: 800;
-            text-transform: uppercase;
-        }
-
-        p {
-            opacity: 0.7;
-            line-height: 1.6;
-            font-size: 0.95rem;
-            margin-bottom: 20px;
-        }
-
+        flex: 1; min-width: 250px;
+        h3 { font-size: 1.2rem; margin-bottom: 25px; font-weight: 800; text-transform: uppercase; }
+        p { opacity: 0.7; line-height: 1.6; font-size: 0.95rem; margin-bottom: 20px; }
         ul {
-            list-style: none;
-            padding: 0;
+            list-style: none; padding: 0;
             li {
                 margin-bottom: 12px;
-                a {
-                    color: var(--text-color);
-                    opacity: 0.7;
-                    text-decoration: none;
-                    transition: 0.3s;
-                    font-size: 0.95rem;
-                    display: inline-block;
-                    &:hover {
-                        opacity: 1;
-                        color: #4f46e5;
-                        transform: translateX(5px);
-                    }
+                a { color: var(--text-color); opacity: 0.7; text-decoration: none; transition: 0.3s; font-size: 0.95rem; display: inline-block;
+                    &:hover { opacity: 1; color: #4f46e5; transform: translateX(5px); }
                 }
             }
         }
     }
 
     .social-icons {
-        display: flex;
-        gap: 15px;
-        margin-top: 20px;
-        a {
-            color: var(--text-color);
-            font-size: 1.3rem;
-            opacity: 0.6;
-            transition: 0.3s;
+        display: flex; gap: 15px; margin-top: 20px;
+        a { color: var(--text-color); font-size: 1.3rem; opacity: 0.6; transition: 0.3s;
             &:hover { opacity: 1; color: #4f46e5; transform: scale(1.1); }
         }
     }
 
-    .footer-bottom {
-        text-align: center;
-        margin-top: 50px;
-        padding-top: 25px;
-        border-top: 1px solid var(--border-color);
-        p { font-size: 0.85rem; opacity: 0.5; }
-    }
+    .footer-bottom { text-align: center; margin-top: 50px; padding-top: 25px; border-top: 1px solid var(--border-color); p { font-size: 0.85rem; opacity: 0.5; } }
 }
 
 // ==========================================
-// 4. MOBİL UYUMLULUK (HEPSİ DAHİL)
+// 6-7. AKORDEON MENÜ VE SİDEBAR 
+// (Taşma hataları burada çözüldü)
 // ==========================================
-@media (max-width: 992px) {
-    html, body {
-        overflow-x: hidden !important; 
-        width: 100% !important;
-    }
-
-    * { box-sizing: border-box !important; }
-
-    .dashboard {
-        display: flex !important;
-        flex-direction: column !important;
-        width: 100% !important;
-        padding: 15px !important; 
-        gap: 20px !important;
-    }
-
-    .top-row {
-        display: flex !important;
-        flex-direction: column !important;
-        gap: 20px !important;
-    }
-
-    .sidebar { width: 100% !important; overflow: hidden !important; }
-    .sidebar-nav ul {
-        display: flex !important;
-        flex-direction: row !important; 
-        overflow-x: auto !important;
-        padding: 5px 0 10px 0 !important;
-        gap: 10px !important;
-        -webkit-overflow-scrolling: touch;
-        li { flex-shrink: 0 !important; }
-        .submenu {
-            list-style: none; padding: 0; margin: 0; max-height: 0; overflow: hidden; transition: max-height 0.4s ease;
-            li a { display: flex; align-items: center; padding: 12px 20px 12px 55px; color: var(--text-color); text-decoration: none; font-size: 1rem; font-weight: 600; opacity: 0.6; border-radius: 10px; margin: 0 10px 5px 10px; transition: all 0.2s ease;
-                i { margin-right: 15px; width: 20px; }
-                &:hover, &.active { opacity: 1; background: #4f46e5 !important; color: #ffffff !important; }
-            }
-        }
-    }
-
-    .main-footer {
-        text-align: center;
-        .footer-container {
-            flex-direction: column !important;
-            align-items: center !important;
-        }
-        .social-icons { justify-content: center !important; }
-    }
-
-    .balance-card, .chart-box, .trade-box, .history-table, .market-summary-card, .settings-card, .contributor-card {
-        width: 100% !important;
-        padding: 20px !important;
-    }
-    .table-responsive { width: 100% !important; overflow-x: auto !important; }
-    
-    .header { padding: 0 15px !important; }
-}
-
-// 6 ve 7 Numaralı bölümlerini koruyorum (Yukarıdaki kopyalarını temizledim)
 .sidebar-nav {
     width: 100%;
-    .accordion-menu { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 15px; }
+    
+    .accordion-menu { 
+        list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 15px; 
+        width: 100%; 
+    }
+    
     .menu-group {
         background: transparent; border-radius: 15px; overflow: hidden; transition: all 0.3s ease;
+        width: 100%; 
+        box-sizing: border-box; // EKLENDİ
+        
         .menu-toggle {
             appearance: none !important; -webkit-appearance: none !important; -moz-appearance: none !important;
             width: 100%; display: flex; justify-content: space-between; align-items: center; background: transparent !important; border: none !important; box-shadow: none !important; padding: 15px 20px; color: var(--text-color); font-size: 1.1rem; font-weight: 800; cursor: pointer; outline: none !important;
-            .title { display: flex; align-items: center; i { margin-right: 15px; color: #4f46e5; width: 25px; } }
+            box-sizing: border-box; 
+            
+            .title { display: flex; align-items: center; i { margin-right: 15px; color: #4f46e5; width: 25px; text-align: center;} }
             .arrow { transition: transform 0.3s ease; opacity: 0.6; }
             &:hover { background: rgba(128, 128, 128, 0.05) !important; }
         }
+        
         .submenu {
             list-style: none; padding: 0; margin: 0; max-height: 0; overflow: hidden; transition: max-height 0.4s ease;
-            li a { display: flex; align-items: center; padding: 12px 20px 12px 55px; color: var(--text-color); text-decoration: none; font-size: 1rem; font-weight: 600; opacity: 0.6; border-radius: 10px; margin: 0 10px 5px 10px; transition: all 0.2s ease;
-                i { margin-right: 15px; width: 20px; }
+            width: 100%;
+            
+            li a { 
+                display: flex; align-items: center; padding: 12px 20px 12px 55px; color: var(--text-color); text-decoration: none; font-size: 1rem; font-weight: 600; opacity: 0.6; border-radius: 10px; margin: 0 10px 5px 10px; transition: all 0.2s ease;
+                
+                // TAŞMAYI ÇÖZEN HAYATİ KOD: 
+                // Eğer sağdan soldan 10px margin varsa, genişliği %100 değil, %100 eksi 20px olmalı!
+                width: calc(100% - 20px); 
+                box-sizing: border-box; 
+                
+                i { margin-right: 15px; width: 20px; text-align: center;}
                 &:hover, &.active { opacity: 1; background: #4f46e5 !important; color: #ffffff !important; }
             }
         }
-        &.open { background: rgba(128, 128, 128, 0.04); border: 1px solid var(--border-color);
+        
+        &.open { 
+            background: rgba(128, 128, 128, 0.04); border: 1px solid var(--border-color);
             .menu-toggle .arrow { transform: rotate(180deg); color: #4f46e5; opacity: 1; }
             .submenu { max-height: 500px; padding-bottom: 10px; }
         }
     }
+}
+
+// Düz (Akordeon olmayan) linkler için taşma engeli
+.sidebar-nav ul:not(.accordion-menu):not(.submenu) {
+    display: flex; flex-direction: column; gap: 12px; padding: 0; margin: 0; list-style: none;
+    li a {
+        display: flex; align-items: center; padding: 18px 22px; color: var(--text-color); border-radius: 15px; font-weight: 800; font-size: 1.1rem; transition: 0.2s;
+        width: 100%; box-sizing: border-box; text-decoration: none;
+        i { margin-right: 15px; font-size: 1.3rem; width: 25px; text-align: center; }
+        &:hover, &.active { background: #4f46e5; color: white; }
+    }
+}
+
+.content { width: 100%; box-sizing: border-box; }
+#dashboard-content { display: grid; gap: 30px; width: 100%; box-sizing: border-box; }
+.top-row { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+.panel { min-height: 60vh; }
+
+// ==========================================
+// 4. MOBİL UYUMLULUK
+// ==========================================
+@media (max-width: 992px) {
+    html, body { overflow-x: hidden !important; width: 100% !important; }
+    * { box-sizing: border-box !important; }
+
+    .dashboard {
+        display: flex !important; flex-direction: column !important; width: 100% !important; padding: 15px !important; gap: 20px !important;
+    }
+
+    .top-row { display: flex !important; flex-direction: column !important; gap: 20px !important; }
+
+    .sidebar { width: 100% !important; overflow: hidden !important; }
+    
+    // MOBİL MENÜ DÜZELTMESİ: Row yerine Column yapıldı, aksi halde akordeon yanlara taşar
+    .sidebar-nav ul.accordion-menu, .sidebar-nav ul:not(.submenu) {
+        display: flex !important;
+        flex-direction: column !important; 
+        padding: 5px 0 10px 0 !important;
+        gap: 10px !important;
+    }
+
+    .main-footer {
+        text-align: center;
+        .footer-container { flex-direction: column !important; align-items: center !important; }
+        .social-icons { justify-content: center !important; }
+    }
+
+    .balance-card, .chart-box, .trade-box, .history-table, .market-summary-card, .settings-card, .contributor-card {
+        width: 100% !important; padding: 20px !important;
+    }
+    .table-responsive { width: 100% !important; overflow-x: auto !important; }
+    .header { padding: 0 15px !important; }
 }
