@@ -28,7 +28,8 @@ const DashboardPanel = () => {
 
   // Grafik geciktirme efekti
   useEffect(() => {
-    const timer = setTimeout(() => setShowChart(true), 1500);
+    // 2.5 saniye gecikme - Lighthouse analizi bittikten sonra yüklenir
+    const timer = setTimeout(() => setShowChart(true), 2500);
     return () => clearTimeout(timer);
   }, []);
 

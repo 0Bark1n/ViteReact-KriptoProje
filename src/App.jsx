@@ -6,8 +6,9 @@ import Navbar from './components/Navbar';
 import Sidebar from './components/Sidebar';
 import Footer from './components/Footer';
 
+import DashboardPanel from './components/DashboardPanel'; // (Standart import)
+
 // Tıklanınca (Lazy) yüklenecek olan ağır paneller
-const DashboardPanel = lazy(() => import('./components/DashboardPanel'));
 const RealApiPanel = lazy(() => import('./components/RealApiPanel'));
 const CurrencyPanel = lazy(() => import('./components/CurrencyPanel'));
 const AssetsPanel = lazy(() => import('./components/AssetsPanel'));
