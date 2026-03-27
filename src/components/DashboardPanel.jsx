@@ -8,6 +8,9 @@ const DashboardPanel = () => {
   const [currentCoin, setCurrentCoin] = useState(localStorage.getItem('last_selected_coin') || 'BTC');
   const [updateSpeed, setUpdateSpeed] = useState(Number(localStorage.getItem('updateFrequency')) || 5);
   
+  // Grafik Geciktirici (Lighthouse Performans için)
+  const [showChart, setShowChart] = useState(false);
+
   // Bakiye ve Form State'leri
   const [bankBalance, setBankBalance] = useState(Number(localStorage.getItem('bank_balance')) || 10000);
   const [portfolioValue, setPortfolioValue] = useState(0);
@@ -21,7 +24,15 @@ const DashboardPanel = () => {
     ETH: { data: [3300, 3450, 3380, 3520, 3450], lastPrice: 3450, isUp: true }
   });
 
-  // --- 2. FİYAT SİMÜLASYONU VE GÜNCELLEME ---
+  // --- 2. EFEKTLER ---
+
+  // Grafik geciktirme efekti
+  useEffect(() => {
+    const timer = setTimeout(() => setShowChart(true), 1500);
+    return () => clearTimeout(timer);
+  }, []);
+
+  // Fiyat Simülasyonu
   useEffect(() => {
     const interval = setInterval(() => {
       setCoins(prevCoins => {
@@ -40,7 +51,7 @@ const DashboardPanel = () => {
           newCoins[symbol] = coin;
         });
 
-        window.coins = newCoins; // Diğer dosyalar okuyabilsin diye
+        window.coins = newCoins; 
         return newCoins;
       });
     }, updateSpeed * 1000);
@@ -48,7 +59,7 @@ const DashboardPanel = () => {
     return () => clearInterval(interval);
   }, [updateSpeed]);
 
-  // Portföy Değerini Hesapla (Fiyatlar veya Bakiye değiştikçe)
+  // Portföy Hesaplama
   useEffect(() => {
     let btcMiktar = parseFloat(localStorage.getItem('btc_bakiye')) || 0;
     let ethMiktar = parseFloat(localStorage.getItem('eth_bakiye')) || 0;
@@ -62,7 +73,6 @@ const DashboardPanel = () => {
 
   // --- 3. İŞLEM FONKSİYONLARI ---
 
-  // A) Admin Para Ekleme
   const handleAdminAdd = () => {
     const amount = parseFloat(adminAmount);
     if (!amount || amount <= 0) {
@@ -74,10 +84,9 @@ const DashboardPanel = () => {
     localStorage.setItem('bank_balance', newBalance);
     setAdminAmount('');
     window.dispatchEvent(new CustomEvent('trigger-notification', { detail: { message: `Hesaba $${amount.toLocaleString('tr-TR')} eklendi!`, type: "success" } }));
-    window.dispatchEvent(new Event('update-assets')); // Donut grafiğini uyar
+    window.dispatchEvent(new Event('update-assets'));
   };
 
-  // B) Alım ve Satım İşlemleri
   const handleTrade = (type) => {
     const amount = parseFloat(tradeAmount);
     if (!amount || amount <= 0) {
@@ -113,7 +122,6 @@ const DashboardPanel = () => {
       nakitBakiye += amount;
     }
 
-    // İşlem Geçmişine Kaydet
     const newTrade = {
       asset: tradeAsset === 'BTC' ? 'Bitcoin (BTC)' : 'Ethereum (ETH)',
       type: type,
@@ -125,18 +133,16 @@ const DashboardPanel = () => {
     const oldTransactions = JSON.parse(localStorage.getItem('transactions')) || [];
     localStorage.setItem('transactions', JSON.stringify([newTrade, ...oldTransactions]));
     
-    // Değerleri LocalStorage'a Kaydet
     localStorage.setItem('bank_balance', nakitBakiye);
     localStorage.setItem('btc_bakiye', btcBakiye);
     localStorage.setItem('eth_bakiye', ethBakiye);
     
-    // State'leri Güncelle
     setBankBalance(nakitBakiye);
     setTradeAmount('');
 
     window.dispatchEvent(new CustomEvent('trigger-notification', { detail: { message: `${amount}$ tutarında ${tradeAsset} ${type.toLowerCase()} işlemi başarılı!`, type: "success" } }));
-    window.dispatchEvent(new Event('update-assets')); // Varlıklarım sayfasını uyar
-    window.dispatchEvent(new Event('update-history')); // İşlem Geçmişi sayfasını uyar
+    window.dispatchEvent(new Event('update-assets'));
+    window.dispatchEvent(new Event('update-history'));
   };
 
   // --- 4. GRAFİK AYARLARI ---
@@ -166,7 +172,7 @@ const DashboardPanel = () => {
               <h3>${bankBalance.toLocaleString('tr-TR', {minimumFractionDigits: 2})}</h3>
             </div>
             <div className="admin-deposit">
-              <input type="number" value={adminAmount} onChange={(e) => setAdminAmount(e.target.value)} placeholder="Para Ekle" />
+              <input type="number" value={adminAmount} onChange={(e) => setAdminAmount(e.target.value)} placeholder="Para Ekle" aria-label="Bakiye Ekleme Miktarı" />
               <button onClick={handleAdminAdd}>Ekle</button>
             </div>
           </div>
@@ -216,10 +222,13 @@ const DashboardPanel = () => {
           </div>
         </div>
         <div id="mainChart">
-          {/* GRFAİK YÜKLENİRKEN SAYFAYI TIKAMASIN DİYE SUSPENSE EKLENDİ */}
-          <Suspense fallback={<div style={{ padding: '40px', color: '#a5b4fc', textAlign: 'center', fontWeight: 'bold' }}>Grafik Hazırlanıyor...</div>}>
-            <Chart options={chartOptions} series={[{ name: 'Fiyat', data: coins[currentCoin].data }]} type="area" height={300} />
-          </Suspense>
+          {showChart ? (
+            <Suspense fallback={<div style={{ padding: '40px', color: '#a5b4fc', textAlign: 'center', fontWeight: 'bold' }}>Grafik Hazırlanıyor...</div>}>
+              <Chart options={chartOptions} series={[{ name: 'Fiyat', data: coins[currentCoin].data }]} type="area" height={300} />
+            </Suspense>
+          ) : (
+            <div style={{ padding: '40px', color: '#a5b4fc', textAlign: 'center', fontWeight: 'bold' }}>Piyasa Verileri Yükleniyor...</div>
+          )}
         </div>
       </div>
 
