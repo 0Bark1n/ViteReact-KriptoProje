@@ -1,6 +1,6 @@
 # 🚀 KriptoProje: Dijital Finans ve Kripto Cüzdan Arayüzü
 
-![ATÜ Logo](https://0bark1n.github.io/OkulProjesi_Kripto/assets/ATU_Logo.png)
+![ATÜ Logo](https://github.com/0Bark1n/OkulProjesi_Kripto/blob/main/assets/ATU_Logo.jpg)
 
 **Adana Alparslan Türkeş Bilim ve Teknoloji Üniversitesi (ATÜ)**, Ön-Yüz Yazılım Geliştirme bölümü *İleri Web Tasarımı* dersi kapsamında, **Grup No 2** tarafından geliştirilmiş kapsamlı bir borsa ve cüzdan simülasyonu projesidir.
 
