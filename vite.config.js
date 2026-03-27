@@ -1,27 +1,18 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-
-// cssInjectedByJsPlugin'i sildik çünkü performansı düşürüyor.
+import cssInjectedByJsPlugin from 'vite-plugin-css-injected-by-js'
 
 export default defineConfig({
   plugins: [
-    react()
+    react(),
+    cssInjectedByJsPlugin() // CSS'i tekrar içeri gömüyoruz çünkü dosyan çok küçük (5kb)
   ],
   build: {
-    minify: 'terser', // Daha önce yüklediğimiz terser ile en iyi sıkıştırmayı yapıyoruz
+    minify: 'terser',
     rollupOptions: {
       output: {
-        // Kütüphaneleri (React, FontAwesome vb.) ayrı bir dosyaya (vendor) bölüyoruz
-        manualChunks(id) {
-          if (id.includes('node_modules')) {
-            return 'vendor';
-          }
-        },
+        manualChunks: undefined, // Dosyaları bölme, tek parça (bundle) yap
       },
     },
-    // CSS dosyalarını JS'den ayırıp paralel indirilmesini sağlar
-    cssCodeSplit: true,
-    // 2KB'den büyük görselleri JS içine gömme, ayrı dosya yap (JS boyutu şişmesin)
-    assetsInlineLimit: 2048, 
   },
 })
