@@ -79,7 +79,7 @@ Proje, modern web standartlarının en üst seviyesinde performans sunmaktadır.
 </table>
 
 <br>
-<p><i>Detaylı performans raporuna proje içerisindeki <b>LighthouseRaporu.html</b> dosyasından veya web arayüzündeki footerda bulunan yazıya tıklayarak ulaşabilirsiniz.</i></p>
+<p><i>Detaylı performans raporuna proje içerisindeki /public/<b>LighthouseRaporu.html</b> dosyasından veya web arayüzündeki footerda bulunan yazıya tıklayarak ulaşabilirsiniz.</i></p>
 
 </div>
 
