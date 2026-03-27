@@ -27,7 +27,15 @@ const Footer = () => {
       </div>
 
       <div className="footer-bottom">
-        <p>-[[ Grup No 2 | Proje Konusu: Dijital Finans ve Kripto Cüzdan Arayüzü ]]-</p>
+          <a 
+            href="/LighthouseRaporu.html" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="lighthouse-report-btn"
+          >
+            <i className="fas fa-gauge-high"></i> 
+            Performans Analizi (Lighthouse 100/100)
+          </a>
       </div>
     </footer>
   );

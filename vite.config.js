@@ -4,7 +4,7 @@ import react from '@vitejs/plugin-react';
 export default defineConfig({
   plugins: [react()],
   
-  // SASS UYARILARINI SUSTURDUĞUMUZ YER (İşte bu kadar basit!)
+  // SASS UYARILARINI SUSTURDUĞUMUZ YER
   css: {
     preprocessorOptions: {
       scss: {
