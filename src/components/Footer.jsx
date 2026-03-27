@@ -28,7 +28,7 @@ const Footer = () => {
 
       <div className="footer-bottom">
           <a 
-            href="/LighthouseRaporu.html" 
+            href="/lighthouseraporu.html" 
             target="_blank" 
             rel="noopener noreferrer" 
             className="lighthouse-report-btn"

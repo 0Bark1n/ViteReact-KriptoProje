@@ -1,4 +1,5 @@
 {
+  "cleanUrls": true,
   "headers": [
     {
       "source": "/assets/(.*)",
@@ -19,7 +20,7 @@
       ]
     },
     {
-      "source": "/(.*)",
+      "source": "/lighthouseraporu.html",
       "headers": [
         {
           "key": "Cache-Control",
