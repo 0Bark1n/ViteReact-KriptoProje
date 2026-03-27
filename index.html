@@ -2,6 +2,10 @@
 <html lang="tr" data-theme="dark">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <meta name="author" content="Barkın Arık">
@@ -23,17 +27,20 @@
     <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" media="print" onload="this.media='all'">
     
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-
-    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/webfonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/webfonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
-    
     <title>KriptoProje</title>
 </head>
 <body>
     <div id="root"></div>
+    
     <script type="module" src="/src/main.jsx"></script>
+
+    <script>
+        window.addEventListener('load', function() {
+            var link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css';
+            document.head.appendChild(link);
+        });
+    </script>
 </body>
 </html>
