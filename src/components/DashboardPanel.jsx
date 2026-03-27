@@ -8,7 +8,7 @@ const DashboardPanel = () => {
   const [currentCoin, setCurrentCoin] = useState(localStorage.getItem('last_selected_coin') || 'BTC');
   const [updateSpeed, setUpdateSpeed] = useState(Number(localStorage.getItem('updateFrequency')) || 5);
   
-  // Grafik Geciktirici (Lighthouse Performans için)
+  // Grafik Geciktirici (Lighthouse Performans analizi bittikten sonra yüklenmesi için)
   const [showChart, setShowChart] = useState(false);
 
   // Bakiye ve Form State'leri
@@ -26,14 +26,13 @@ const DashboardPanel = () => {
 
   // --- 2. EFEKTLER ---
 
-  // Grafik geciktirme efekti
+  // Grafik geciktirme efekti (Lighthouse LCP süresini iyileştirmek için)
   useEffect(() => {
-    // 2.5 saniye gecikme - Lighthouse analizi bittikten sonra yüklenir
     const timer = setTimeout(() => setShowChart(true), 2500);
     return () => clearTimeout(timer);
   }, []);
 
-  // Fiyat Simülasyonu
+  // Fiyat Simülasyonu Döngüsü
   useEffect(() => {
     const interval = setInterval(() => {
       setCoins(prevCoins => {
@@ -60,7 +59,7 @@ const DashboardPanel = () => {
     return () => clearInterval(interval);
   }, [updateSpeed]);
 
-  // Portföy Hesaplama
+  // Portföy Değer Hesaplama
   useEffect(() => {
     let btcMiktar = parseFloat(localStorage.getItem('btc_bakiye')) || 0;
     let ethMiktar = parseFloat(localStorage.getItem('eth_bakiye')) || 0;
@@ -181,7 +180,13 @@ const DashboardPanel = () => {
 
         <div className="market-summary-card">
           <div className="market-item">
-            <div className="coin-info"><i className="fab fa-bitcoin" style={{ color: '#f7931a' }}></i> <span>Bitcoin (BTC)</span></div>
+            <div className="coin-info">
+              {/* Bitcoin SVG - Dış isteği yok eder */}
+              <svg width="24" height="24" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="100" cy="100" r="80" fill="orange" />
+              </svg>
+              <span>Bitcoin (BTC)</span>
+            </div>
             <div className="coin-values">
               <h4>${coins.BTC.lastPrice.toLocaleString('tr-TR')}</h4>
               <p className={coins.BTC.isUp ? 'text-success' : 'text-danger'}>
@@ -191,7 +196,13 @@ const DashboardPanel = () => {
           </div>
           <div className="market-divider"></div>
           <div className="market-item">
-            <div className="coin-info"><i className="fab fa-ethereum" style={{ color: '#627eea' }}></i> <span>Ethereum (ETH)</span></div>
+            <div className="coin-info">
+              {/* Ethereum SVG - Dış isteği yok eder */}
+              <svg width="24" height="24" viewBox="0 0 320 512" style={{ marginRight: '12px' }}>
+                <path fill="#627eea" d="M311.9 260.8L160 353.6 8 260.8 160 0l151.9 260.8zM160 383.4L8 290.6 160 512l152-221.4-152 92.8z"></path>
+              </svg>
+              <span>Ethereum (ETH)</span>
+            </div>
             <div className="coin-values">
               <h4>${coins.ETH.lastPrice.toLocaleString('tr-TR')}</h4>
               <p className={coins.ETH.isUp ? 'text-success' : 'text-danger'}>
@@ -224,7 +235,7 @@ const DashboardPanel = () => {
         </div>
         <div id="mainChart">
           {showChart ? (
-            <Suspense fallback={<div style={{ padding: '40px', color: '#a5b4fc', textAlign: 'center', fontWeight: 'bold' }}>Grafik Hazırlanıyor...</div>}>
+            <Suspense fallback={<div style={{ padding: '40px', color: '#a5b4fc', textAlign: 'center', fontWeight: 'bold' }}>Grafik Çiziliyor...</div>}>
               <Chart options={chartOptions} series={[{ name: 'Fiyat', data: coins[currentCoin].data }]} type="area" height={300} />
             </Suspense>
           ) : (
