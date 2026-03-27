@@ -6,6 +6,13 @@
 ### Adana Alparslan Türkeş Bilim ve Teknoloji Üniversitesi
 **Ön-Yüz Yazılım Geliştirme Projesi**
 
+<br>
+<a href="https://vite-react-kripto-proje.vercel.app/" target="_blank">
+  <img src="https://img.shields.io/badge/PROJENİN_CANLI_DEMOSU-TIKLA_İZLE-success?style=for-the-badge&logo=vercel&logoColor=white" alt="Live Demo">
+</a>
+<p>🔗 <b>Link:</b> <a href="https://vite-react-kripto-proje.vercel.app/">https://vite-react-kripto-proje.vercel.app/</a></p>
+<br>
+
 [![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://reactjs.org/)
 [![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
 [![Sass](https://img.shields.io/badge/Sass-CC6699?style=for-the-badge&logo=sass&logoColor=white)](https://sass-lang.com/)
@@ -15,7 +22,7 @@
 
 <br>
 
-<img src="./src/assets/Logo.png" width="200" alt="CTRL Crypto Logo">
+<img src="./src/assets/Logo.png" width="150" alt="CTRL Crypto Logo">
 
 </div>
 
@@ -72,7 +79,7 @@ Proje, modern web standartlarının en üst seviyesinde performans sunmaktadır.
 </table>
 
 <br>
-<p><i>Detaylı performans raporuna proje içerisindeki <b>LighthouseRaporu.html</b> dosyasından veya web arayüzündeki butondan ulaşabilirsiniz.</i></p>
+<p><i>Detaylı performans raporuna proje içerisindeki <b>LighthouseRaporu.html</b> dosyasından veya web arayüzündeki footerda bulunan yazıya tıklayarak ulaşabilirsiniz.</i></p>
 
 </div>
 
