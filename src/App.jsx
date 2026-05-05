@@ -104,7 +104,7 @@ function App() {
       </div>
 
       {/* Alt Bilgi */}
-      <Footer />
+      <Footer setActiveTab={setActiveTab} />
     </>
   );
 }

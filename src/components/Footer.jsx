@@ -1,6 +1,15 @@
 import React from 'react';
 
-const Footer = () => {
+const Footer = ({ setActiveTab }) => {
+
+  const handleNavigation = (e, tabName) => {
+    e.preventDefault();
+    if (setActiveTab) {
+      setActiveTab(tabName);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
   return (
     <footer className="main-footer">
       <div className="footer-container">
@@ -16,11 +25,11 @@ const Footer = () => {
         <div className="footer-section links">
           <h3>Hızlı Erişim</h3>
           <ul>
-            <li><a href="#dashboard" data-target="dashboard-content">Dashboard</a></li>
-            <li><a href="#assets" data-target="assets-panel">Varlıklarım</a></li>
-            <li><a href="#history" data-target="history-panel">İşlem Geçmişi</a></li>
-            <li><a href="#settings" data-target="settings-panel">Ayarlar</a></li>
-            <li><a href="#contributors" data-target="contributors-panel">Emeği Geçenler</a></li>
+            <li><a href="#" onClick={(e) => handleNavigation(e, 'dashboard-content')}>Dashboard</a></li>
+            <li><a href="#" onClick={(e) => handleNavigation(e, 'assets-panel')}>Varlıklarım</a></li>
+            <li><a href="#" onClick={(e) => handleNavigation(e, 'history-panel')}>İşlem Geçmişi</a></li>
+            <li><a href="#" onClick={(e) => handleNavigation(e, 'settings-panel')}>Ayarlar</a></li>
+            <li><a href="#" onClick={(e) => handleNavigation(e, 'contributors-panel')}>Emeği Geçenler</a></li>
           </ul>
         </div>
         
