@@ -1,3 +1,4 @@
+Sunum Linki: https://drive.google.com/file/d/1WeaOzKYIFUxZteoIoQsmNdgpbR0-JBm8/view?usp=drivesdk
 <div align="center">
 
 <img src="./src/assets/ATU_Logo.jpg" width="150" alt="ATÜ Logo">
